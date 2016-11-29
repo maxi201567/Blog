@@ -1,0 +1,30 @@
+extern "C"     extern "C"使得在C++中使用C编译方式成为可能。在“C++”下定义“C”函数，需要加extern “C”关键词。用extern "C"来指明该函数使用C编译方式。输出的“C”函数可以从“C”代码里调用
+
+
+使用微软专用的_declspec (dllexport)  
+cpp文件在编译为OBJ文件时要对函数进行重新命名，C语言会把函数name重新命名为_name,而C++会重新命名为_name@@decoration，
+extern "C"表示用C语言的格式将函数重命名
+要输出整个的类，对类使用_declspec(_dllexpot)；要输出类的成员函数，则对该函数使用_declspec(_dllexport)
+
+像如下代码
+int main()
+{
+   func()
+   return 0;
+}
+编译器生成像下面的代码
+call func1
+连接器传入像下面的代码
+call 0x4000000         ; 函数func的地址
+如果func在DLL中，连接器就无法得到func的直接地址；在32位系统下，连接器将生成一个thunk包含func的调用地址
+0x40000000:    jmp DWORD PTR __imp_func
+__imp_func事func在.exe导入函数表中的地址,这个地址传入连接器进行连接
+这样生成的代码比较大而且速度慢；
+而使用__declspec(dllimport) 则直接告诉连接器直接调用DLL中func的地址，不要使用thunk
+  __declspec(dllimport) void func(void);
+   void main(void) 
+   {
+       func1();
+   }
+生成如下代码
+   call DWORD PTR __imp_fu

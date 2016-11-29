@@ -1,9 +1,4 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
+
 @font-face {
     font-family: 'Nunito-Bold';
     src:url(../fonts/Nunito-Bold.ttf) format('truetype');
@@ -199,38 +194,7 @@ font-size: 2em;
   text-align: center;
 }
 
-i.facebook {
-  width: 64px;
-  height: 64px;
-  background: url(../images/img-sprite.png)no-repeat 0px 0px;
-  float: left;
-  vertical-align: middle;
-    margin: 0 10px;
-}
-i.twitter{
-   width: 64px;
-  height: 64px;
-  background: url(../images/img-sprite.png)no-repeat -64px 0px;
-  float: left;
-  vertical-align: middle;
-    margin: 0 10px;
-}
-i.google {
-   width: 64px;
-  height: 64px;
-  background: url(../images/img-sprite.png)no-repeat -128px 0px;
-  float: left;
-  vertical-align: middle;
-    margin: 0 10px;
-}
-i.beh {
-  width: 64px;
-  height: 64px;
-  background: url(../images/img-sprite.png)no-repeat -192px 0px;
-  float: left;
-  vertical-align: middle;
-    margin: 0 10px;
-}
+
 .contact-section {
   padding: 4em 0;
   background: #deecdf;

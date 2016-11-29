@@ -1,0 +1,7 @@
+深入浅出MFC
+C++ Primer Plus
+C Primer
+C和指针
+Windows程序设计
+游戏编程大师技巧
+DirectX 9.0 3D游戏开发基础
