@@ -1,4 +1,4 @@
-#include <winsock.h>
+ï»¿#include <winsock.h>
 #include <iostream>
 
 #pragma comment(lib, "ws2_32.lib")
@@ -7,19 +7,19 @@ void PrintIP(SOCKET temp, int num);
 void UpdateClient(SOCKET temp, int num, char form[3][3]);
 void UpdateServerFrom(SOCKET temp, int num);
 
-char form[3][3];//ÆåÕó
+char form[3][3];//æ£‹é˜µ
 SOCKET sServer;
 SOCKADDR_IN aServer;
 SOCKET sClient[2] = { NULL, NULL };
 SOCKADDR_IN aClient[2];
 int len[2] = { sizeof(aClient[0]), sizeof(aClient[1]) };
 
-BOOL bReady[2];//¸÷ÓÃ»§ÊÇ·ñÒÑ×¼±¸
-BOOL bIng;//ÓÎÏ·ÊÇ·ñ¿ªÊ¼ÁË
-BOOL bFirst;//ÊÇ·ñÊÇµÚÒ»¸öÏÂÆå
-BOOL bRed;//ÊÇ·ñºìÉ«
-BOOL bChess;//µÚÒ»¸öÓÃ»§µÄ»ØºÏ
-char bWin;//0Õı³£ÏÂÆå 1ÓÃ»§1Ó®ÁË 2 Ó®ÁË 3Æ½¾Ö
+BOOL bReady[2];//å„ç”¨æˆ·æ˜¯å¦å·²å‡†å¤‡
+BOOL bIng;//æ¸¸æˆæ˜¯å¦å¼€å§‹äº†
+BOOL bFirst;//æ˜¯å¦æ˜¯ç¬¬ä¸€ä¸ªä¸‹æ£‹
+BOOL bRed;//æ˜¯å¦çº¢è‰²
+BOOL bChess;//ç¬¬ä¸€ä¸ªç”¨æˆ·çš„å›åˆ
+char bWin;//0æ­£å¸¸ä¸‹æ£‹ 1ç”¨æˆ·1èµ¢äº† 2 èµ¢äº† 3å¹³å±€
 
 //bRed: R:B  bReady r Y  bFirst o:x
 //Turn t  Start s
@@ -36,12 +36,12 @@ HANDLE T0, T1;
 
 int main()
 {
-	std::cout << "[Maxi-ÓÎÏ··şÎñÆ÷]\n" << std::endl;
+	std::cout << "[Maxi-æ¸¸æˆæœåŠ¡å™¨]\n" << std::endl;
 
-	srand(GetTickCount());//Ëæ»úÖÖ×Ó
-	//**********³õÊ¼»¯ÓÎÏ·×´Ì¬
+	srand(GetTickCount());//éšæœºç§å­
+	//**********åˆå§‹åŒ–æ¸¸æˆçŠ¶æ€
 	InitServer();
-	//**********³õÊ¼»¯Winsock
+	//**********åˆå§‹åŒ–Winsock
 	WSADATA wsaData;
 
 	aServer.sin_family = AF_INET;
@@ -54,7 +54,7 @@ int main()
 	hostent *IP;
 	gethostname(name, sizeof(name));
 	IP = gethostbyname(name);
-	std::cout << "±¾»ú:" << name << std::endl;
+	std::cout << "æœ¬æœº:" << name << std::endl;
 	for (int i = 0;; i++)
 	{
 		std::cout <<"IP" << i << ":" << inet_ntoa(*(IN_ADDR*)IP->h_addr_list[i]) << std::endl;
@@ -67,31 +67,31 @@ int main()
 
 	listen(sServer, 5);
 
-	//************µÈ´ıÓÃ»§1Á¬½Ó
+	//************ç­‰å¾…ç”¨æˆ·1è¿æ¥
 	while ((sClient[0] = accept(sServer, (SOCKADDR*)&aClient[0], &len[0])) == NULL);
 	PrintIP(sClient[0], 1);
 	T0 = CreateThread(NULL, 0, Client0, NULL, 0, 0);
 
-	std::cout << "µÈ´ıÓÃ»§2Á¬½Ó" << std::endl;
-	//*************ÓÃ»§2Á¬½Ó
+	std::cout << "ç­‰å¾…ç”¨æˆ·2è¿æ¥" << std::endl;
+	//*************ç”¨æˆ·2è¿æ¥
 	while ((sClient[1] = accept(sServer, (SOCKADDR*)&aClient[1], &len[1])) == NULL);
 	PrintIP(sClient[1], 2);
 	T1 = CreateThread(NULL, 0, Client1, NULL, 0, 0);
 
-	//************ÓÎÏ·Ö÷Ñ­»·
+	//************æ¸¸æˆä¸»å¾ªç¯
 	while (1)
 	{
 		while (!(bReady[0] && bReady[1]));
-		std::cout << "ÓÃ»§" << bFirst + 1 << "ÏÈÊÖ" << ":ÀàĞÍÊÇo:ÑÕÉ«Îª" << (bFirst ? bRed : !bRed) << std::endl;
+		std::cout << "ç”¨æˆ·" << bFirst + 1 << "å…ˆæ‰‹" << ":ç±»å‹æ˜¯o:é¢œè‰²ä¸º" << (bFirst ? bRed : !bRed) << std::endl;
 		Sleep(3000);
-		std::cout << "ÓÎÏ·¿ªÊ¼ÁË" << std::endl;
+		std::cout << "æ¸¸æˆå¼€å§‹äº†" << std::endl;
 		bChess = bFirst;
 		bIng = TRUE;
 		while (bWin == 0);
-		std::cout << "Ó®¼Ò:" << (int)bWin << std::endl;
+		std::cout << "èµ¢å®¶:" << (int)bWin << std::endl;
 
-		Sleep(3000);//µÈ´ıÖ®Ç°µÄÏß³Ì½áÊø
-		//ÉÏÒ»³¡ÓÎÏ·½áÊø
+		Sleep(3000);//ç­‰å¾…ä¹‹å‰çš„çº¿ç¨‹ç»“æŸ
+		//ä¸Šä¸€åœºæ¸¸æˆç»“æŸ
 		InitServer();
 		TerminateThread(T0, 0);
 		TerminateThread(T1, 0);
@@ -116,10 +116,10 @@ void PrintIP(SOCKET temp, int num)
 
 	getpeername(temp, (SOCKADDR*)&aName, &len);
 
-	std::cout << "ÓÃ»§" << num << ":[" << inet_ntoa(aName.sin_addr) << "]" << "ÒÑÁ¬½Ó" << std::endl;
+	std::cout << "ç”¨æˆ·" << num << ":[" << inet_ntoa(aName.sin_addr) << "]" << "å·²è¿æ¥" << std::endl;
 }
 
-DWORD WINAPI Client0(LPVOID lParam)//¸üĞÂÊı¾İ
+DWORD WINAPI Client0(LPVOID lParam)//æ›´æ–°æ•°æ®
 {
 	char buf[2];
 	send(sClient[0], (bRed ? "R" : "B"), 1, 0);
@@ -127,28 +127,28 @@ DWORD WINAPI Client0(LPVOID lParam)//¸üĞÂÊı¾İ
 	CreateThread(NULL, 0, GetReady0, NULL, 0, NULL);
 	while (!bReady[1]);	
 	send(sClient[0], "Y", 1, 0);
-	while (!bIng);//¶¼×¼±¸ºÃÁË
+	while (!bIng);//éƒ½å‡†å¤‡å¥½äº†
 	send(sClient[0], "s", 1, 0);
-	while (1)//½ÓÊÜÆåÅÌ
+	while (1)//æ¥å—æ£‹ç›˜
 	{
-		send(sClient[0], &bWin, 1, 0);//ÊäÓ®
+		send(sClient[0], &bWin, 1, 0);//è¾“èµ¢
 
-		if (!bChess)//»ØºÏ½áÊø
+		if (!bChess)//å›åˆç»“æŸ
 		{
 			send(sClient[0], "C", 1, 0);
 			send(sClient[0], form[0], 3, 0);
 			send(sClient[0], form[1], 3, 0);
 			send(sClient[0], form[2], 3, 0);
-			std::cout << "[Êı¾İÒÑÍùÓÃÓÃ»§1·¢ËÍ]" << std::endl;
+			std::cout << "[æ•°æ®å·²å¾€ç”¨ç”¨æˆ·1å‘é€]" << std::endl;
 			recv(sClient[0], form[0], 3, 0);
 			recv(sClient[0], form[1], 3, 0);
 			recv(sClient[0], form[2], 3, 0);
-			std::cout << "[ÓÃ»§1»ØºÏ½áÊø]" << std::endl;
+			std::cout << "[ç”¨æˆ·1å›åˆç»“æŸ]" << std::endl;
 			printf("%2d %2d %2d\n", form[0][0], form[0][1], form[0][2]);
 			printf("%2d %2d %2d\n", form[1][0], form[1][1], form[1][2]);
 			printf("%2d %2d %2d\n", form[2][0], form[2][1], form[2][2]);
 
-			//¸ü»»ÓÃ»§
+			//æ›´æ¢ç”¨æˆ·
 			bChess = !bChess;
 		}
 		else
@@ -168,11 +168,11 @@ DWORD WINAPI Client1(LPVOID lParam)
 	send(sClient[1], (bRed ? "B" : "R"), 1, 0);
 	send(sClient[1], (bFirst ? "x" : "o"), 1, 0);
 	CreateThread(NULL, 0, GetReady1, NULL, 0, NULL);
-	while (!bReady[0]);	//ÓÃ»§1Î´×¼±¸
+	while (!bReady[0]);	//ç”¨æˆ·1æœªå‡†å¤‡
 	send(sClient[1], "Y", 1, 0);
-	while (!bIng);//¶¼×¼±¸ºÃÁË
+	while (!bIng);//éƒ½å‡†å¤‡å¥½äº†
 	send(sClient[1], "s", 1, 0);
-	while (1)//½ÓÊÜÆåÅÌ
+	while (1)//æ¥å—æ£‹ç›˜
 	{
 		if (bWin == 2)
 		{
@@ -192,15 +192,15 @@ DWORD WINAPI Client1(LPVOID lParam)
 			send(sClient[1], form[0], 3, 0);
 			send(sClient[1], form[1], 3, 0);
 			send(sClient[1], form[2], 3, 0);
-			std::cout << "[Êı¾İÒÑÍùÓÃÓÃ»§2·¢ËÍ]" << std::endl;
+			std::cout << "[æ•°æ®å·²å¾€ç”¨ç”¨æˆ·2å‘é€]" << std::endl;
 			recv(sClient[1], form[0], 3, 0);
 			recv(sClient[1], form[1], 3, 0);
 			recv(sClient[1], form[2], 3, 0);
-			std::cout << "[ÓÃ»§2»ØºÏ½áÊø]" << std::endl;
+			std::cout << "[ç”¨æˆ·2å›åˆç»“æŸ]" << std::endl;
 			printf("%2d %2d %2d\n", form[0][0], form[0][1], form[0][2]);
 			printf("%2d %2d %2d\n", form[1][0], form[1][1], form[1][2]);
 			printf("%2d %2d %2d\n", form[2][0], form[2][1], form[2][2]);
-			bChess = !bChess;//»ØºÏ½áÊø
+			bChess = !bChess;//å›åˆç»“æŸ
 		}
 		else
 		{
@@ -219,10 +219,10 @@ DWORD WINAPI GetReady0(LPVOID lParam)
 	char buf[2];
 	while (1)
 	{
-		recv(sClient[0], buf, 1, 0);//½ÓÊÜµ½×¼±¸±êÖ¾
+		recv(sClient[0], buf, 1, 0);//æ¥å—åˆ°å‡†å¤‡æ ‡å¿—
 		if (strncmp(buf, "r", 1) == 0)
 		{
-			std::cout << "ÓÃ»§1:×¼±¸" << std::endl;
+			std::cout << "ç”¨æˆ·1:å‡†å¤‡" << std::endl;
 			bReady[0] = TRUE;
 			break;
 		}
@@ -234,10 +234,10 @@ DWORD WINAPI GetReady1(LPVOID lParam)
 	char buf[2];
 	while (1)
 	{
-		recv(sClient[1], buf, 1, 0);//½ÓÊÜµ½×¼±¸±êÖ¾
+		recv(sClient[1], buf, 1, 0);//æ¥å—åˆ°å‡†å¤‡æ ‡å¿—
 		if (strncmp(buf, "r", 1) == 0)
 		{
-			std::cout << "ÓÃ»§2:×¼±¸" << std::endl;
+			std::cout << "ç”¨æˆ·2:å‡†å¤‡" << std::endl;
 			bReady[1] = TRUE;
 			break;
 		}
@@ -249,9 +249,9 @@ void InitServer()
 {
 	memset(form, -1, sizeof(form));//0 1 3 4
 	bReady[0] = bReady[1] = FALSE;
-	bWin = 0;//Î´·ÖÊ¤¸º
+	bWin = 0;//æœªåˆ†èƒœè´Ÿ
 	bRed = rand() % 2;
-	bFirst = rand() % 2;//Ñ¡ÔñµÚÒ»¸öÏÂÆåµÄÓÃ»§
+	bFirst = rand() % 2;//é€‰æ‹©ç¬¬ä¸€ä¸ªä¸‹æ£‹çš„ç”¨æˆ·
 	bIng = FALSE;
 }
 void CheckWiner()
@@ -265,25 +265,25 @@ void CheckWiner()
 			if (form[i][j] == -1)
 			{
 				count++;
-				continue;//ÅĞ¶Ï-1»¹ÓĞÃ»ÓĞ
+				continue;//åˆ¤æ–­-1è¿˜æœ‰æ²¡æœ‰
 			}
 			else if (i == 0)
 			{
-				//Ã¿ÁĞ
+				//æ¯åˆ—
 				if (form[0][j] == form[1][j] && form[1][j] == form[2][j])	bWin = (form[i][j] < 2 ? bRed : !bRed) + 1;
-				//Ğ±Ïß
+				//æ–œçº¿
 				if (j == 0)
 					if (form[0][0] == form[1][1] && form[1][1] == form[2][2])	bWin = (form[i][j] < 2 ? bRed : !bRed) + 1;
 				if (j == 2)
 					if (form[0][2] == form[1][1] && form[1][1] == form[2][0])	bWin = (form[i][j] < 2 ? bRed : !bRed) + 1;
 			}
 		}
-		//Ã¿ĞĞ
+		//æ¯è¡Œ
 		if (form[i][0] == form[i][1] && form[i][1] == form[i][2])
 		{
 			if (form[i][0] != -1)
 				bWin = (form[i][j] < 2 ? bRed : !bRed) + 1;
 		}
 	}
-	if (count == 0 && bWin == 0) bWin = 3;//Æ½¾Ö
+	if (count == 0 && bWin == 0) bWin = 3;//å¹³å±€
 }
