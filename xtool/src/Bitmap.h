@@ -7,7 +7,7 @@ class Bitmap
 public:
 	Bitmap() :hBitmap(NULL), hDCBitmap(NULL),hDCPhoto(NULL), mWidth(0), mHeight(0){}
 	~Bitmap(){};
-	BOOL SaveBitmap()//没带‘/’
+	BOOL SaveBitmap()//不带‘/’
 	{
 		LPSTR   lpImageData = NULL;
 		CHAR path[256];

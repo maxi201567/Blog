@@ -11,7 +11,7 @@ public:
 
 	CWFrame() :hwnd(NULL){};
 	~CWFrame();
-	void Init(HINSTANCE hInstance, int nShowCmd, int Width, int Height, bool bWindow);//创建一个主窗口
+	void Init(HINSTANCE hInstance, int nShowCmd, int Width, int Height, bool bWindow);//创建一个窗体
 	int MsgLoop();
 	void Release();
 
