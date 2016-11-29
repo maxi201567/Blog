@@ -1,4 +1,4 @@
-#include <d3d9.h>
+ï»¿#include <d3d9.h>
 #include <C:\\Program Files (x86)\\Microsoft DirectX SDK (June 2010)\\Include\\d3dx9.h>
 #include "C:\\Users\\Maxi\\Desktop\\_INPUT\\CAMERA.h"
 #include "C:\\Users\\Maxi\\Desktop\\_INPUT\\INPUT.h"
@@ -14,16 +14,16 @@
 
 #pragma once
 
-#define DC_T05 D3DCOLOR_ARGB(128, 255,255,255)//°ëÍ¸Ã÷
-#define DC_T1  D3DCOLOR_ARGB(255, 255,255,255)//²»Í¸Ã÷
+#define DC_T05 D3DCOLOR_ARGB(128, 255,255,255)//åŠé€æ˜
+#define DC_T1  D3DCOLOR_ARGB(255, 255,255,255)//ä¸é€æ˜
 
 extern char form[3][3];
 extern WCHAR textbuf[256];
 extern BOOL bReady[2];
 extern BOOL bIng;
-extern BOOL bRed;//ÊÇ·ñÊÇºìÉ«
-extern BOOL bTurn;//ÊÇ·ñÂÖµ½Äã
-extern BOOL bType;//trueÊÇÈ¦£¬falseÊÇ²æ
+extern BOOL bRed;//æ˜¯å¦æ˜¯çº¢è‰²
+extern BOOL bTurn;//æ˜¯å¦è½®åˆ°ä½ 
+extern BOOL bType;//trueæ˜¯åœˆï¼Œfalseæ˜¯å‰
 extern BOOL bRecv;
 extern int oot;
 extern char bWin;
@@ -31,7 +31,7 @@ extern char bWin;
 static D3DXVECTOR3 vIcon[12];
 static RECT rIcon[7];
 static RECT rform[3][3];
-static D3DXMATRIX scale1, scale2;//·Å´ó±¶Êı
+static D3DXMATRIX scale1, scale2;//æ”¾å¤§å€æ•°
 
 class CD3D
 {

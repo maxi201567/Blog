@@ -1,19 +1,19 @@
-#include "D3D.h"
+Ôªø#include "D3D.h"
 
 
 void CD3D::Init(HWND hwnd, D3DPRESENT_PARAMETERS *d3dpp)
 {
 	_hwnd = hwnd;
-	//************************** ±º‰≥ı ºªØ
+	//**************************Êó∂Èó¥ÂàùÂßãÂåñ
 	_tApp = GetTickCount(); _tRun = 0; _tLast = _tApp;
 	_fps = 60; _msfps = 1000.0f / _fps; _nfps = 0;
-	//**************************D3D≥ı ºªØ
+	//**************************D3DÂàùÂßãÂåñ
 	_interface = Direct3DCreate9(D3D_SDK_VERSION);
 	if (_interface == NULL) return;
 
 	D3DCAPS9 caps;
 	_interface->GetDeviceCaps(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, &caps);
-	int vp = 0;                                    // «∑Ò÷ß≥÷”≤º˛∂•µ„‘ÀÀ„
+	int vp = 0;                                    //ÊòØÂê¶ÊîØÊåÅÁ°¨‰ª∂È°∂ÁÇπËøêÁÆó
 	if (caps.DevCaps & D3DDEVCAPS_HWTRANSFORMANDLIGHT)
 		vp = D3DCREATE_HARDWARE_VERTEXPROCESSING;
 	else
@@ -24,7 +24,7 @@ void CD3D::Init(HWND hwnd, D3DPRESENT_PARAMETERS *d3dpp)
 		::MessageBox(hwnd, L"CreateDevice Failed", L"Error", MB_OK);
 		return;
 	}
-	//*****************¥¥Ω®Œƒ◊÷Ω”ø⁄
+	//*****************ÂàõÂª∫ÊñáÂ≠óÊé•Âè£
 	if (FAILED(D3DXCreateFont(_device, 22, 10, 10, 0, FALSE, 0, 0, 10, 0, L"FONT", &_font)))
 	{
 		::MessageBox(hwnd, L"CreateFont Failed", L"Error", MB_OK);
@@ -41,16 +41,16 @@ void CD3D::Init(HWND hwnd, D3DPRESENT_PARAMETERS *d3dpp)
 	LoadTextureFR(_device, _tback, MAKEINTRESOURCE(IDB_BACK), 0);
 	LoadTextureFR(_device, _ticon, MAKEINTRESOURCE(IDB_ICON), 0);
 
-	//*********************Õº±Íœ‘ æŒª÷√
+	//*********************ÂõæÊ†áÊòæÁ§∫‰ΩçÁΩÆ
 	vIcon[0] = { 5, 7, 0 };	vIcon[1] = { 56, 7, 0 };	vIcon[2] = { 107, 7, 0 };
 	vIcon[3] = { 5, 60, 0 };	vIcon[4] = { 56, 60, 0};	vIcon[5] = { 107, 60, 0 };
 	vIcon[6] = { 5, 113, 0 };	vIcon[7] = { 56, 113, 0};	vIcon[8] = { 107, 113, 0 };
-	vIcon[9] = { 0, 0, 0};//Œﬁ”√
+	vIcon[9] = { 0, 0, 0};//Êó†Áî®
 	vIcon[10] = { 173, 32, 0 };
 	vIcon[11] = { 173, 103, 0 };
 
-	rIcon[0] = { 7, 2, 44, 43 };	rIcon[1] = { 63, 2, 108, 48 };	rIcon[2] = { 127, 3, 173, 53 };//∫⁄…´£¨»¶≤Êµ„
-	rIcon[3] = { 7, 84, 43, 126 };	rIcon[4] = { 63, 80, 108, 126 };	rIcon[5] = { 126, 78, 175, 127 };//∫Ï…´
+	rIcon[0] = { 7, 2, 44, 43 };	rIcon[1] = { 63, 2, 108, 48 };	rIcon[2] = { 127, 3, 173, 53 };//ÈªëËâ≤ÔºåÂúàÂèâÁÇπ
+	rIcon[3] = { 7, 84, 43, 126 };	rIcon[4] = { 63, 80, 108, 126 };	rIcon[5] = { 126, 78, 175, 127 };//Á∫¢Ëâ≤
 	rIcon[6] = { 341, 12, 520, 40 };
 
 	rform[0][0] = { 5, 7, 50, 55 }; rform[0][1] = { 56, 7, 101, 55 }; rform[0][2] = { 107, 7, 152, 55 };
@@ -65,7 +65,7 @@ void CD3D::Display()
 	_tRun = GetTickCount();
 
 	_device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0,128,128), 1.0f, 0);
-	//*******************************************≥°æ∞ªÊ÷∆
+	//*******************************************Âú∫ÊôØÁªòÂà∂
 	if (SUCCEEDED(_device->BeginScene()))
 	{
 		_sback->Begin(D3DXSPRITE_ALPHABLEND);
@@ -75,43 +75,43 @@ void CD3D::Display()
 
 		_sback->SetTransform(&scale2);
 
-		if (bIng)//”Œœ∑ø™ º
+		if (bIng)//Ê∏∏ÊàèÂºÄÂßã
 		{
-			if (bTurn)//ƒ„µƒªÿ∫œ
+			if (bTurn)//‰Ω†ÁöÑÂõûÂêà
 			{
 				_sback->Draw(_ticon, &rIcon[(bRed ? 5 : 2)], NULL, &vIcon[10], D3DCOLOR_XRGB(255, 255, 255));
-				wsprintf(textbuf, L"ƒ„µƒªÿ∫œ(%ds)", oot);
+				wsprintf(textbuf, L"‰Ω†ÁöÑÂõûÂêà(%ds)", oot);
 			}
-			else//∂‘∑Ωµƒªÿ∫œ
+			else//ÂØπÊñπÁöÑÂõûÂêà
 			{
 				_sback->Draw(_ticon, &rIcon[(bRed ? 2 : 5)], NULL, &vIcon[11], D3DCOLOR_XRGB(255, 255, 255));
-				wsprintf(textbuf, L"∂‘∑Ωµƒªÿ∫œ(%ds)", oot);
+				wsprintf(textbuf, L"ÂØπÊñπÁöÑÂõûÂêà(%ds)", oot);
 			}
 			DrawModel(_hwnd, &_pmou, _ticon, &_moudev, _sback);
 		}
 		else
 		{
-			if (bReady[0])//”√ªß1◊º±∏
+			if (bReady[0])//Áî®Êà∑1ÂáÜÂ§á
 			{
 				_sback->Draw(_ticon, &rIcon[(bRed ? 5 : 2)], NULL, &vIcon[10], D3DCOLOR_XRGB(255, 255, 255));
-				wsprintf(textbuf, L"◊º±∏ø™ º...");
+				wsprintf(textbuf, L"ÂáÜÂ§áÂºÄÂßã...");
 			}
-			if (bReady[1])//”√ªß2◊º±∏
+			if (bReady[1])//Áî®Êà∑2ÂáÜÂ§á
 			{
 				_sback->Draw(_ticon, &rIcon[(bRed ? 2 : 5)], NULL, &vIcon[11], D3DCOLOR_XRGB(255, 255, 255));
-				wsprintf(textbuf, L"◊º±∏ø™ º...");
+				wsprintf(textbuf, L"ÂáÜÂ§áÂºÄÂßã...");
 			}
 		}
 		if (bWin != 0)
 		{
-			wsprintf(textbuf, L"”Œœ∑Ω· ¯,");
+			wsprintf(textbuf, L"Ê∏∏ÊàèÁªìÊùü,");
 			bTurn = FALSE;
 			if (bWin == 1)
-				lstrcat(textbuf, L"ƒ„”Æ¡À£°");
+				lstrcat(textbuf, L"‰Ω†Ëµ¢‰∫ÜÔºÅ");
 			else if (bWin == 2)
-				lstrcat(textbuf, L"ƒ„ ‰¡À£°");
+				lstrcat(textbuf, L"‰Ω†Ëæì‰∫ÜÔºÅ");
 			else if (bWin == 3)
-				lstrcat(textbuf, L"∆Ωæ÷¡À£°");
+				lstrcat(textbuf, L"Âπ≥Â±Ä‰∫ÜÔºÅ");
 
 			_sback->Draw(_ticon, &rIcon[(bRed ? 5 : 2)], NULL, &vIcon[10], D3DCOLOR_XRGB(255, 255, 255));
 			_sback->Draw(_ticon, &rIcon[(bRed ? 2 : 5)], NULL, &vIcon[11], D3DCOLOR_XRGB(255, 255, 255));
@@ -124,7 +124,7 @@ void CD3D::Display()
 	}
 	_device->Present(0, 0, 0, 0);
 	
-	//****************************Õ¨≤Ω÷°¬ 
+	//****************************ÂêåÊ≠•Â∏ßÁéá
 	_tLast = GetTickCount();
 	Sleep(DWORD( _msfps - (_tRun - _tLast)));
 	_tLast = _tRun;
@@ -162,18 +162,18 @@ void DrawModel(HWND hwnd, POINT *pos, LPDIRECT3DTEXTURE9 texture, Mouse *mouse, 
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 3; j++)
 		{
-			if (form[i][j] == -1 && bTurn && bWin == 0)//œÏ”¶”√ªß ‰»Î
+			if (form[i][j] == -1 && bTurn && bWin == 0)//ÂìçÂ∫îÁî®Êà∑ËæìÂÖ•
 				if (PtInRect(&rform[i][j], *pos))
 				{
 					sprite->Draw(texture, &rIcon[(bRed ? 3 : 0) + (bType ? 0 : 1)], NULL, &vIcon[i * 3 + j], DC_T05);
 					if (mouse->Hit(0))
 					{
 						form[i][j] = (bRed ? 3 : 0) + (bType ? 0 : 1);
-						bTurn = FALSE;//ƒ„µƒªÿ∫œΩ· ¯
+						bTurn = FALSE;//‰Ω†ÁöÑÂõûÂêàÁªìÊùü
 						sprite->Draw(texture, &rIcon[(bRed ? 3 : 0) + (bType ? 0 : 1)], NULL, &vIcon[i * 3 + j], DC_T1);
 					}
 				}
-			if (form[i][j] != -1)//ªÊ÷∆∆Â≈Ã
+			if (form[i][j] != -1)//ÁªòÂà∂Ê£ãÁõò
 				sprite->Draw(texture, &rIcon[(int)form[i][j]], NULL, &vIcon[i * 3 + j], DC_T1);
 		}
 }

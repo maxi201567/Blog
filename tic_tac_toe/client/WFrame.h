@@ -1,4 +1,4 @@
-#include <Windows.h>
+ï»¿#include <Windows.h>
 #include "D3D.h"
 #include "resource.h"
 #include <winsock.h>
@@ -16,7 +16,7 @@ private:
 	CD3D d3d;
 			 
 public:
-	void Init(HINSTANCE hInstance, int nShowCmd, int Width, int Height, bool bWindow);//´´½¨Ò»¸öÖ÷´°¿Ú
+	void Init(HINSTANCE hInstance, int nShowCmd, int Width, int Height, bool bWindow);//åˆ›å»ºä¸€ä¸ªä¸»çª—å£
 	int MsgLoop();
 	void Release();
 
@@ -26,6 +26,6 @@ void InitGame();
 void UpdateText(HWND hwnd);
 DWORD WINAPI NetThread(LPVOID lParam);
 
-LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);//ÏûÏ¢Ñ­»·
-BOOL CALLBACK IpProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);//¶Ô»°¿òº¯Êı
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);//æ¶ˆæ¯å¾ªç¯
+BOOL CALLBACK IpProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);//å¯¹è¯æ¡†å‡½æ•°
 

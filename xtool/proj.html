@@ -1,70 +1,54 @@
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<style>
+     #head{
+	    background-color: #eeffef;
+		padding-bottom: 1px;
+	 }
+     #code{
+	    padding-top: 1px;
+	    padding-left: 100px;
+		padding-right: 100px;
+		background-color: #ffeeef;
+		text-align: center;
+	 }
+	 footer{
+	    padding-top: 1px;
+	    background-color: #eeffef;
+	 }
+</style>
 <title>Maxi's Blog | Project</title>
 <head>
-<p><a href="..\index.html"> << Go Back!</p></a>
+<div id="head">
+<p><a href="..\index.html"> << Go Back!</p></a>	
 <center>
-<h1><a href="src\Xtool.rar"><b>Xtool(Yes,Just exe)</b></a></h1>
+<h1><a href="src\Xtool.rar"><b>Xtool(Yes,Just .exe)</b></a></h1>
 </center>
+<hr width="90%", color=#000000/>
+</div>
 </head>
 
 <body>
 
-<h3>
-<center>resource.h</center>
-<center>
-<iframe src="src\resource.h",name=iframe1, width="500", height="300"></iframe>
-<div id=div1></div>
-<script>
-var txtval=ifram1.body.innerText;
-div1.innerHTML=txtval;
-</script>
-</center>
-</h3>
-<h3>
-<center>WFrame:.h&.cpp</center>
-<center>
-<iframe src="src\WFrame.h",name=iframe2, width="500", height="300"></iframe>
-<div id=div2></div>
-<script>
-var txtval=ifram2.body.innerText;
-div2.innerHTML=txtval;
-</script>
+<div id="code">
+<h3>Resource</h3>
+<img src="src\soft_img.bmp"/ width="45%"><iframe src="src\resource.h",name=iframe1, width="500", height="300"></iframe>
+<h3>WFrame</h3>
+<iframe src="src\WFrame.h",name=iframe2, width="45%", height="300"></iframe>
+<iframe src="src\WFrame.cpp",name=iframe3, width="45%", height="300"></iframe>
+<h3>Bitmap.h</h3>
+<iframe src="src\Bitmap.h",name=iframe4, width="50%", height="300"></iframe>
+<h3>Winmain</h3>
+<iframe src="src\WFrame.cpp",name=iframe5, width="50%", height="300"></iframe>
 
-<iframe src="src\WFrame.cpp",name=iframe3, width="500", height="300"></iframe>
-<div id=div3></div>
-<script>
-var txtval=ifram3.body.innerText;
-div3.innerHTML=txtval;
-</script>
-</center>
-</h3>
-
-<h3>
-<center>Bitmap.h</center>
-<center>
-<iframe src="src\Bitmap.h",name=iframe4, width="500", height="300"></iframe>
-<div id=div4></div>
-<script>
-var txtval=ifram4.body.innerText;
-div4.innerHTML=txtval;
-</script>
-</center>
-</h3>
-<h3>
-<center>Winmain:main.cpp</center>
-<center>
-<iframe src="src\WFrame.cpp",name=iframe5, width="500", height="300"></iframe>
-<div id=div5></div>
-<script>
-var txtval=ifram5.body.innerText;
-div5.innerHTML=txtval;
-</script>
-</center>
-</h3>
 </body>
+</div>
+
 <footer>
+<hr width="90%", color=#000000/>
 <center><p>MaxiChen's code,i really want you to comment on me, but, i have no idea how</p>
 </center>
+<hr width="90%", color=#000000/>
 </footer>
+
 </html>

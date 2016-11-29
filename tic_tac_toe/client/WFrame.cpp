@@ -1,4 +1,4 @@
-#include "WFrame.h"
+ï»¿#include "WFrame.h"
 
 char form[3][3];
 WCHAR textbuf[256];
@@ -7,26 +7,26 @@ BOOL bIng;
 BOOL bRed;
 BOOL bTurn;
 BOOL bType;
-BOOL bRecv;//ÊÇ·ñÒª½ÓÊÕÊı¾İ
+BOOL bRecv;//æ˜¯å¦è¦æ¥æ”¶æ•°æ®
 int oot;
 char bWin;
 
-BOOL bConnect;//ÊÇ·ñÁ¬½Ó³É¹¦
+BOOL bConnect;//æ˜¯å¦è¿æ¥æˆåŠŸ
 
 HWND gwnd;
 
-std::string IP;//·şÎñÆ÷µØÖ·
+std::string IP;//æœåŠ¡å™¨åœ°å€
 SOCKADDR_IN aClient;
 SOCKET sClient;
 
 void CWFrame::Init(HINSTANCE hInstance,int nShowCmd, int Width, int Height, bool bWindow)
 {
 	InitGame();
-	bIng = FALSE;//ÊÇ·ñÔÚÓÎÏ·ÖĞ
-	bReady[0] = bReady[1] = FALSE;//×¼±¸°´¼ü
+	bIng = FALSE;//æ˜¯å¦åœ¨æ¸¸æˆä¸­
+	bReady[0] = bReady[1] = FALSE;//å‡†å¤‡æŒ‰é”®
 
-	lstrcpy(textbuf, L"ÀëÏßÖĞ¡£¡£¡£");//¿ªÊ¼ÊÇÀëÏßµÄ	
-	//**********************window³õÊ¼»¯
+	lstrcpy(textbuf, L"ç¦»çº¿ä¸­ã€‚ã€‚ã€‚");//å¼€å§‹æ˜¯ç¦»çº¿çš„	
+	//**********************windowåˆå§‹åŒ–
 	WNDCLASSEX wndclass;
 	wndclass.cbSize = sizeof(wndclass);
 	wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
@@ -44,7 +44,7 @@ void CWFrame::Init(HINSTANCE hInstance,int nShowCmd, int Width, int Height, bool
 	if (!RegisterClassEx(&wndclass))
 		return;
 
-	hwnd = CreateWindow(L"WND", L"¾® - MAXI",
+	hwnd = CreateWindow(L"WND", L"äº• - MAXI",
 		WS_CAPTION,
 		CW_USEDEFAULT, CW_USEDEFAULT, 
 		Width, Height,
@@ -62,7 +62,7 @@ void CWFrame::Init(HINSTANCE hInstance,int nShowCmd, int Width, int Height, bool
 		TRUE);
 
 	gwnd = hwnd;
-	//****************D3D³õÊ¼»¯
+	//****************D3Dåˆå§‹åŒ–
 	D3DPRESENT_PARAMETERS d3dpp;
 	::ZeroMemory(&d3dpp, sizeof(D3DPRESENT_PARAMETERS));
 	d3dpp.Windowed = bWindow;//*
@@ -74,12 +74,12 @@ void CWFrame::Init(HINSTANCE hInstance,int nShowCmd, int Width, int Height, bool
 	d3dpp.AutoDepthStencilFormat = D3DFMT_UNKNOWN;
 	d3dpp.MultiSampleQuality =0;
 	d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;
-	d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;//Á¢¼´Ë¢ĞÂ
+	d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;//ç«‹å³åˆ·æ–°
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;//*
 
 	d3d.Init(hwnd, &d3dpp);
 
-	//*****************Socket³õÊ¼»¯
+	//*****************Socketåˆå§‹åŒ–
 	IP = "127.0.0.1";
 	WSADATA wdata;
 	aClient.sin_family = AF_INET;
@@ -169,7 +169,7 @@ void UpdateText(HWND hwnd)
 {
 	if (connect(sClient, (SOCKADDR*)&aClient, sizeof(aClient)) == 0)
 	{
-		lstrcpy(textbuf, L"ÒÑÁ¬½Ó·şÎñÆ÷");
+		lstrcpy(textbuf, L"å·²è¿æ¥æœåŠ¡å™¨");
 
 		CreateThread(NULL, 0, NetThread, NULL, 0, NULL);
 
@@ -178,7 +178,7 @@ void UpdateText(HWND hwnd)
 		DrawMenuBar(hwnd);
 	}
 	else
-		lstrcpy(textbuf, L"ÀëÏßÖĞ¡£¡£¡£");
+		lstrcpy(textbuf, L"ç¦»çº¿ä¸­ã€‚ã€‚ã€‚");
 }
 
 DWORD WINAPI NetThread(LPVOID lParam)
@@ -186,16 +186,16 @@ DWORD WINAPI NetThread(LPVOID lParam)
 	char buf[2];
 	while (1)
 	{
-		//ÑÕÉ«
+		//é¢œè‰²
 		recv(sClient, buf, 1, 0);
 		bRed = (strncmp(buf, "R", 1) == 0);
-		//·ûºÅ
+		//ç¬¦å·
 		recv(sClient, buf, 1, 0);
 		bType = (strncmp(buf, "o", 1) == 0);
-		//×¼±¸
+		//å‡†å¤‡
 		recv(sClient, buf, 1, 0);
 		bReady[1] = (strncmp(buf, "Y", 1) == 0);
-		//ÊÇ·ñ¿ªÊ¼
+		//æ˜¯å¦å¼€å§‹
 		recv(sClient, buf, 1, 0);
 		bIng = (strncmp(buf, "s", 1) == 0);
 
@@ -203,7 +203,7 @@ DWORD WINAPI NetThread(LPVOID lParam)
 		{
 			if (bIng)
 			{
-				recv(sClient, buf, 1, 0);//½ÓÊÕÊäÓ®
+				recv(sClient, buf, 1, 0);//æ¥æ”¶è¾“èµ¢
 				bWin = buf[0];
 				recv(sClient, buf, 1, 0);
 				bTurn = (strncmp(buf, "C", 1) == 0);
@@ -216,7 +216,7 @@ DWORD WINAPI NetThread(LPVOID lParam)
 					bRecv = FALSE;
 					oot = 5;
 					while (bTurn);
-					//µÈ´ıbTurn = F
+					//ç­‰å¾…bTurn = F
 					send(sClient, form[0], 3, 0);
 					send(sClient, form[1], 3, 0);
 					send(sClient, form[2], 3, 0);
@@ -228,21 +228,21 @@ DWORD WINAPI NetThread(LPVOID lParam)
 
 		bIng = FALSE;
 		bReady[0] = FALSE;
-		Sleep(3000);//3sºóË¢ĞÂµ½ÏÂÒ»¾Ö
+		Sleep(3000);//3sååˆ·æ–°åˆ°ä¸‹ä¸€å±€
 		EnableMenuItem(GetMenu(gwnd), IDR_READY, MF_ENABLED);
 		EnableMenuItem(GetMenu(gwnd), IDR_EXIT, MF_ENABLED);
 		DrawMenuBar(gwnd);
 		InitGame();
-		wsprintf(textbuf, L"Çë×¼±¸£¡");
+		wsprintf(textbuf, L"è¯·å‡†å¤‡ï¼");
 	}
 	return 0;
 }
 
 void InitGame()
 {
-	memset(form, -1, sizeof(form));//³õÊ¼»¯ÆåÕó
-	ZeroMemory(textbuf, sizeof(textbuf));//³õÊ¼»¯ÎÄ×Ö»º³åÇø
-    bReady[1] = FALSE;//×¼±¸°´¼ü
+	memset(form, -1, sizeof(form));//åˆå§‹åŒ–æ£‹é˜µ
+	ZeroMemory(textbuf, sizeof(textbuf));//åˆå§‹åŒ–æ–‡å­—ç¼“å†²åŒº
+    bReady[1] = FALSE;//å‡†å¤‡æŒ‰é”®
 	bWin = 0;
 	bRed = TRUE;
 	bTurn = FALSE;
