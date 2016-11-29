@@ -1,4 +1,4 @@
-#include "WFrame.h"
+ï»¿#include "WFrame.h"
 #include "resource.h"
 #include "Bitmap.h"
 #include <iostream>
@@ -277,14 +277,14 @@ LRESULT CALLBACK NoteProc(HWND hNote, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONUP:
 		click = FALSE;
 		GetCursorPos(&mp);
-		count = pen.Insert(mp.x, mp.y, TRUE, COLOR[color], DEGREE[size]);//×ó¼üËÉ¿ª
+		count = pen.Insert(mp.x, mp.y, TRUE, COLOR[color], DEGREE[size]);//å·¦é”®æ¾å¼€
 		break;
 
 	case WM_MOUSEMOVE:
 		if (click)
 		{
 			GetCursorPos(&mp);
-			count = pen.Insert(mp.x, mp.y, FALSE, COLOR[color], DEGREE[size]);//×ó¼ü°´ÏÂ²»ÊÇ¶Ïµã
+			count = pen.Insert(mp.x, mp.y, FALSE, COLOR[color], DEGREE[size]);//å·¦é”®æŒ‰ä¸‹ä¸æ˜¯æ–­ç‚¹
 			pen.Display(photo.GetBackDC());
 		}
 		hdc = GetDC(hNote);

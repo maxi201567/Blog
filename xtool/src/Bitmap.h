@@ -1,4 +1,4 @@
-#include <Windows.h>
+ï»¿#include <Windows.h>
 #include <ShlObj.h>
 
 #pragma once
@@ -7,7 +7,7 @@ class Bitmap
 public:
 	Bitmap() :hBitmap(NULL), hDCBitmap(NULL),hDCPhoto(NULL), mWidth(0), mHeight(0){}
 	~Bitmap(){};
-	BOOL SaveBitmap()//Ã»´ø¡®/¡¯
+	BOOL SaveBitmap()//æ²¡å¸¦â€˜/â€™
 	{
 		LPSTR   lpImageData = NULL;
 		CHAR path[256];
@@ -19,13 +19,13 @@ public:
 
 		::GetObject(BMout, sizeof(BITMAP), &bm);
 
-		// ÉèÖÃÎ»Í¼Í¼ÏñÊı¾İ´óĞ¡
+		// è®¾ç½®ä½å›¾å›¾åƒæ•°æ®å¤§å°
 		DWORD   dwImageSize = bm.bmWidthBytes * bm.bmHeight;
 
-		// ·ÖÅäÄÚ´æ
+		// åˆ†é…å†…å­˜
 		lpImageData = (LPSTR)GlobalAlloc(GPTR, dwImageSize);
 
-		// ÉèÖÃÎ»Í¼ÎÄ¼şÍ·
+		// è®¾ç½®ä½å›¾æ–‡ä»¶å¤´
 		BITMAPFILEHEADER bfh;
 		bfh.bfType = ((WORD)('M' << 8) | 'B');
 		bfh.bfSize = sizeof(BITMAPFILEHEADER)+
@@ -36,12 +36,12 @@ public:
 		bfh.bfOffBits = sizeof(BITMAPFILEHEADER)+
 			sizeof(BITMAPINFOHEADER);
 
-		// ÉèÖÃÎ»Í¼ĞÅÏ¢Í·
+		// è®¾ç½®ä½å›¾ä¿¡æ¯å¤´
 		BITMAPINFOHEADER bih;
-		bih.biSize = sizeof(BITMAPINFOHEADER); // Î»Í¼ĞÅÏ¢Í·³ß´ç
-		bih.biWidth = bm.bmWidth;     // Î»Í¼¿í¶È
-		bih.biHeight = bm.bmHeight;    // Î»Í¼¸ß¶È
-		bih.biBitCount = bm.bmBitsPixel; // ÉèÖÃÃ¿ÏñËØËùÓÃ×Ö½ÚÊı
+		bih.biSize = sizeof(BITMAPINFOHEADER); // ä½å›¾ä¿¡æ¯å¤´å°ºå¯¸
+		bih.biWidth = bm.bmWidth;     // ä½å›¾å®½åº¦
+		bih.biHeight = bm.bmHeight;    // ä½å›¾é«˜åº¦
+		bih.biBitCount = bm.bmBitsPixel; // è®¾ç½®æ¯åƒç´ æ‰€ç”¨å­—èŠ‚æ•°
 		bih.biCompression = 0;
 		bih.biPlanes = 1;
 		bih.biSizeImage = dwImageSize;
@@ -49,10 +49,10 @@ public:
 		bih.biYPelsPerMeter = 0;
 		bih.biClrImportant = 0;
 		bih.biClrUsed = 0;
-		// »ñÈ¡Î»Í¼Í¼ÏñÊı¾İ
+		// è·å–ä½å›¾å›¾åƒæ•°æ®
 		GetDIBits(hDCPhoto, BMout, 0, bih.biHeight, lpImageData, (BITMAPINFO*)&bih, DIB_RGB_COLORS);
 
-		// ÉèÖÃÎÄ¼şÃû
+		// è®¾ç½®æ–‡ä»¶å
 		SYSTEMTIME st;
 		GetSystemTime(&st);
 		TCHAR szFileName[_MAX_PATH] = "\0";
@@ -64,7 +64,7 @@ public:
 		TCHAR szAbsolutePath[_MAX_PATH] = "\0";
 		wsprintf(szAbsolutePath, TEXT("%s\\%s"), path, szFileName);
 
-		// ´´½¨ÎÄ¼ş£¬´æ´¢Î»Í¼
+		// åˆ›å»ºæ–‡ä»¶ï¼Œå­˜å‚¨ä½å›¾
 		hFile = CreateFile(szAbsolutePath,           // open file 
 			GENERIC_WRITE,            // open for writing 
 			0,                        // do not share 
@@ -80,10 +80,10 @@ public:
 		::WriteFile(hFile, &bih, sizeof(BITMAPINFOHEADER), &dwWriteBytes, NULL);
 		::WriteFile(hFile, lpImageData, dwImageSize, &dwWriteBytes, NULL);
 
-		// ¹Ø±ÕÎÄ¼ş
+		// å…³é—­æ–‡ä»¶
 		CloseHandle(hFile);
 
-		// ÊÍ·ÅÄÚ´æ
+		// é‡Šæ”¾å†…å­˜
 		GlobalFree(lpImageData);
 
 		return TRUE;
@@ -98,10 +98,10 @@ public:
 			hDCMem = ::CreateCompatibleDC(hDCBitmap);
 			hDCTemp = ::CreateCompatibleDC(hDCBitmap);
 
-			mWidth = GetSystemMetrics(SM_CXSCREEN); // ÆÁÄ»¿í¶È
-			mHeight = GetSystemMetrics(SM_CYSCREEN); // ÆÁÄ»¸ß¶È
+			mWidth = GetSystemMetrics(SM_CXSCREEN); // å±å¹•å®½åº¦
+			mHeight = GetSystemMetrics(SM_CYSCREEN); // å±å¹•é«˜åº¦
 
-			// ´´½¨Î»Í¼
+			// åˆ›å»ºä½å›¾
 			hBitmap = ::CreateCompatibleBitmap(hDCBitmap, mWidth, mHeight);
 			hBmTemp = ::CreateCompatibleBitmap(hDCBitmap, mWidth, mHeight);
 			::SelectObject(hDCMem, hBitmap);
@@ -131,7 +131,7 @@ public:
 	}
 	void DrawRect(RECT* rtemp)
 	{
-		::BitBlt(hDCMem, 0, 0, mWidth, mHeight, hDCTemp, 0, 0, SRCCOPY);//»Ö¸´Î´°´µÄ×´Ì¬
+		::BitBlt(hDCMem, 0, 0, mWidth, mHeight, hDCTemp, 0, 0, SRCCOPY);//æ¢å¤æœªæŒ‰çš„çŠ¶æ€
 		memcpy(&rect, rtemp, sizeof(RECT));
 		HBRUSH brush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HPEN pen = CreatePen(PS_DASH, 1, RGB(255,0,255));
@@ -170,11 +170,11 @@ public:
 private:
 	RECT rect;
 	HBITMAP BMout;
-	HBITMAP hBitmap, hBmTemp;//hBitmap»ñÈ¡×î¿ªÊ¼µÄ½ØÍ¼£¬hBmTemp±£´æÕâÕÅ½ØÍ¼ÓÃÓÚ»Ö¸´
-	HDC   hDCBitmap;//ÓÃÓÚ´´½¨hBitmap
-	HDC   hDCMem, hDCTemp, hDCPhoto;//hDCMemºóÌ¨»º´æ£¬±£´æ»æÖÆÊı¾İ£¬´æ·ÅhBitmap
-	                                //hDCTemp´æ·ÅhBmTemp£¬ÓÃÓÚ»Ö¸´Ô­Ê¼½ØÍ¼£¬»Ö¸´µ½hDCMem
-	                                //hDCPhoto´æ·ÅBMout£¬½ØÍ¼½ØÈ¡µÄÇøÓòµÄ½ØÍ¼
+	HBITMAP hBitmap, hBmTemp;//hBitmapè·å–æœ€å¼€å§‹çš„æˆªå›¾ï¼ŒhBmTempä¿å­˜è¿™å¼ æˆªå›¾ç”¨äºæ¢å¤
+	HDC   hDCBitmap;//ç”¨äºåˆ›å»ºhBitmap
+	HDC   hDCMem, hDCTemp, hDCPhoto;//hDCMemåå°ç¼“å­˜ï¼Œä¿å­˜ç»˜åˆ¶æ•°æ®ï¼Œå­˜æ”¾hBitmap
+	                                //hDCTempå­˜æ”¾hBmTempï¼Œç”¨äºæ¢å¤åŸå§‹æˆªå›¾ï¼Œæ¢å¤åˆ°hDCMem
+	                                //hDCPhotoå­˜æ”¾BMoutï¼Œæˆªå›¾æˆªå–çš„åŒºåŸŸçš„æˆªå›¾
 	int mWidth;
 	int mHeight;
 };
