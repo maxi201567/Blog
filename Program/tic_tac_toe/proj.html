@@ -3,36 +3,56 @@
 <title>Maxi's Blog | Project</title>
 <style>
      #head{
-	    background-color: #fcccff;
+	     background-color: rgba(128,192,255,0.5);
+		 padding-bottom: 10px;
+	 }
+	 body{
+	     background-image:url("../../images/background.jpg");
 	 }
 	 footer{
-	 padding-top: 1px;
-	 background-color: #fcccff;
+	     padding-top: 1px;
+	     padding-bottom: 1px;
+	     background-color: rgba(128,192,255,0.5);
 	 }
      #img{
-	 	 background-color: #ffffef;
+	     padding-bottom: 10px;
+		 padding-top: 10px;
+	 	 background-color: rgba(255,200,192,0.5);
 	 }
 	 #Server{
 	 padding-top: 10px;
+	 padding-bottom: 10px;
 	 padding-left: 100px;
 	 padding-right: 100px;
-	 background-color: #eeffef;
+	 background-color: rgba(255,255,255,0.6);
 	 font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+	 font-size: 20px;
 	 }
 	 #Client{
 	 padding-top: 10px;
+	 padding-bottom: 10px;
 	 padding-left: 100px;
 	 padding-right: 100px;
-	 background-color: #ffeeef;
+	 background-color: rgba(255,255,255,0.4);
 	 font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+	 font-size: 20px;
+	 }
+	 #program{
+	     padding-top: 10px;
+	     padding-bottom: 10px;
+	     padding-left: 100px;
+	     padding-right: 100px;
+	     background-color: rgba(255,255,255,0.6);
+	     font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+	     font-size: 20px;
 	 }
 </style>
 	 
 <head>
 <div id="head">
-<p><a href="..\index.html"> << Go Back!</p></a>
+<a href="../../index.html"><font color="#ffff00", size="5px"> << Go Back!</font></a>
 <center>
-<h1><a href="src\game.rar"><p>井字游戏[TicTacToe]</p></a>
+<h1><a href="src\game.rar"><font color="#ffff00", size="10px">井字游戏[TicTacToe]</font></a>
 <h3>(i just kown this English name in 16_1129)</h3>
 </h1>
 </center>
@@ -41,33 +61,38 @@
 
 <body>
 <div id="Img">
-<hr width="90%", color="#000000"></hr>
+
 <center>
 <p>This is my game's background texture<img src="img\back.png", width="200">This is my game's icon image<img src="img\gicon.png", width="100"></p>
 <p>And some sign texture<img src="img\icon0.png", width="100">And the way I draw<img src="img\photo.jpg", width="80"></p>
 </center>
-<hr width="90%", color="#000000"></hr>
+
 </div>
 
 <div id="Server">
+<center>
 <h2>Server program</h2>
-<hr width="100%", color="#000000"></hr>
-<img src="img\Server.png", width="45%"><iframe src="server_main.cpp",name=iframe0, width="50%", height="315"></iframe></img>
-<p><img src="img\Server_Schedule.bmp", height="45%">And when gaming,server will show you schedule</p></img>
-<hr width="100%", color="#000000"></hr>
+<img src="img\Server.png", width="45%"/><img src="img\Server_Schedule.bmp", height="45%"/>
+<p>And when gaming,server will show you schedule</p>
+<iframe src="server_main.cpp",name=iframe0, width="80%", height="315"></iframe>
+</center>
+
 </div>
 
 <div id="Client">
+<center>
 <h2>Client program</h2>
-<hr width="100%", color="#000000"></hr>
 <img src="img\Offline.bmp", width="40%"><img src="img\SetIP.bmp", width="55%">
 <p>At the beginning, you're offline,so you should set server_IP...->......And just do it.</p>
 <img src="img\SetIP_Done.bmp", width="50%"><img src="img\Ready1.bmp", width="45%">
 <p>When finishing, you can push ready button and wait for the other player's readying.</p>
 <img src="img\Ready2.bmp", width="50%"><img src="img\Finish.bmp", width="45%">
 <p>When all ready.You should win or fail the game or none of them.Yeah, you can see a bug in this image, because i don't want to fix it.</p>
-<hr width="80%", color="#000000"></hr>
-<h4>Now program's code</h4>
+</center>
+</div>
+
+<div id="program">
+<center><h4>Now program's code</h4></center>
 <p>Main</p>
 
 <iframe src="client\Main.cpp", width="70%", height="215"></iframe>
@@ -81,7 +106,6 @@
 <iframe src="client\D3D.h", width="45%", height="315"></iframe>
 <iframe src="client\D3D.cpp", width="50%", height="315"></iframe>
 
-<hr width="100%", color="#000000"></hr>
 </div>
 
 </body>
