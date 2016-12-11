@@ -1,6 +1,6 @@
-
-//Ç°6¸öÊÇÊý¾ÝÀàÐÍ
+ï»¿
+//å‰6ä¸ªæ˜¯æ•°æ®ç±»åž‹
 //[FILE],[CTNU]+data,[CTNU],[DONE]
 //
 enum data_type{ FileBGIN, FileDONE, FileCTNU, Text, Div };
-//½ÓÊÕµ½divºóÉèÖÃdatatype£¬¼´divÏÂÒ»¸öÊý¾Ý½«ÊÇÕâ¸öÀàÐÍ
+//æŽ¥æ”¶åˆ°divåŽè®¾ç½®datatypeï¼Œå³divä¸‹ä¸€ä¸ªæ•°æ®å°†æ˜¯è¿™ä¸ªç±»åž‹

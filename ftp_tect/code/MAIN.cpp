@@ -1,4 +1,4 @@
-#define _AFXDLL
+ï»¿#define _AFXDLL
 #include <afx.h>
 #include <ShlObj.h>
 #include <Windows.h>
@@ -18,11 +18,11 @@ SOCKADDR_IN localA;
 SOCKADDR_IN farA;
 //*******************************
 //MaxiChen-2016.12.4-Begin
-//¼ÙÉèÃ¿Ì¨µçÄÔÊı¾İ»º³åÇø¶¼´óÓÚ256
+//å‡è®¾æ¯å°ç”µè„‘æ•°æ®ç¼“å†²åŒºéƒ½å¤§äº256
 //*******************************
 
 void Recv(HWND hDialog);
-void Send(HWND hDialog);//ÎÄ¼ş·¢ËÍ
+void Send(HWND hDialog);//æ–‡ä»¶å‘é€
 void SendData(HWND hDialog, char *content, int size);
 void Print(HWND hDialog, bool bsend);
 void GetFileInfo(HWND hDialog);
@@ -136,7 +136,7 @@ BOOL _stdcall DialogProc(HWND hDialog, UINT message, WPARAM wParam, LPARAM lPara
 				temp += file.lpstrFile;
 				temp += "]";
 				SetWindowText(hwnd, temp.GetString());
-				//¶ÁÈëÎÄ¼şÊı¾İ
+				//è¯»å…¥æ–‡ä»¶æ•°æ®
 				FileName = file.lpstrFile;
 				HANDLE infile = CreateFile(FileName, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 				if (infile != INVALID_HANDLE_VALUE)
@@ -164,7 +164,7 @@ BOOL _stdcall DialogProc(HWND hDialog, UINT message, WPARAM wParam, LPARAM lPara
 		case IDC_SAVE_FILE:
 
 			bf.hwndOwner = hDialog;
-			bf.lpszTitle = L"Ñ¡ÔñÂ·¾¶";
+			bf.lpszTitle = L"é€‰æ‹©è·¯å¾„";
 			bf.ulFlags = BIF_RETURNONLYFSDIRS;     
 			pidl = SHBrowseForFolder(&bf);
 			if (SHGetPathFromIDList(pidl, path))
@@ -200,14 +200,14 @@ BOOL _stdcall DialogProc(HWND hDialog, UINT message, WPARAM wParam, LPARAM lPara
 				FileName = path;
 				FileName += filename;
 
-				SendData(hDialog, "[FILE]", 6);//×¼±¸½ÓÊÕÎÄ¼ş
-				SendData(hDialog, "start", 5);//Õ¼Î»
+				SendData(hDialog, "[FILE]", 6);//å‡†å¤‡æ¥æ”¶æ–‡ä»¶
+				SendData(hDialog, "start", 5);//å ä½
 				bRecvFile = true;
 				bSendFile = false;
 			}
 			break;
 
-			//·¢ËÍÏûÏ¢
+			//å‘é€æ¶ˆæ¯
 		case IDB_SEND:
 
 			ZeroMemory(sdrvbuf, sizeof(sdrvbuf));
@@ -216,8 +216,8 @@ BOOL _stdcall DialogProc(HWND hDialog, UINT message, WPARAM wParam, LPARAM lPara
 
 			GetWindowTextA(GetDlgItem(hDialog, IDC_SEND), sdrvbuf, 512);
 			SetWindowTextA(GetDlgItem(hDialog, IDC_SEND), "");
-			//·¢ËÍÊı¾İ
-			if (strncmp("[File]", sdrvbuf, 6) == 0)//·¢ËÍÎÄ¼ş
+			//å‘é€æ•°æ®
+			if (strncmp("[File]", sdrvbuf, 6) == 0)//å‘é€æ–‡ä»¶
 			{
 				Print(hDialog, true);
 				CStringA t = sdrvbuf;
@@ -226,13 +226,13 @@ BOOL _stdcall DialogProc(HWND hDialog, UINT message, WPARAM wParam, LPARAM lPara
 				strcpy(sdrvbuf, t);
 				EnableWindow(GetDlgItem(hDialog, IDC_SAVE_FILE), false);
 				SendData(hDialog, "[CLER]", 6);
-				SendData(hDialog, "[FILE]", 6);//¸æËß¶Ô·½Òª·¢ËÍÎÄ¼şÁË
-				SendData(hDialog, sdrvbuf, strlen(sdrvbuf));//·¢ËÍÎÄ¼şĞÅÏ¢
-				//ÉèÖÃÎªÎÄ¼ş·¢ËÍ¶Ë
+				SendData(hDialog, "[FILE]", 6);//å‘Šè¯‰å¯¹æ–¹è¦å‘é€æ–‡ä»¶äº†
+				SendData(hDialog, sdrvbuf, strlen(sdrvbuf));//å‘é€æ–‡ä»¶ä¿¡æ¯
+				//è®¾ç½®ä¸ºæ–‡ä»¶å‘é€ç«¯
 				bSendFile = true;
 				bRecvFile = false;
 			}
-			else//·¢ËÍÆÕÍ¨ÎÄ×ÖĞÅÏ¢
+			else//å‘é€æ™®é€šæ–‡å­—ä¿¡æ¯
 			{
 				SendData(hDialog, "[TEXT]", 6);
 				SendData(hDialog, sdrvbuf, strlen(sdrvbuf));
@@ -279,17 +279,17 @@ void Recv(HWND hDialog)
 		sprintf(temp, "ERROR CODE:%d.", WSAGetLastError());
 		SetWindowTextA(GetDlgItem(hDialog, IDC_E_RECV), temp);
 	}
-	else//½ÓÊÕÊı¾İ³É¹¦
+	else//æ¥æ”¶æ•°æ®æˆåŠŸ
 	{
 		if (nextType == data_type::Div)
 		{
-			//ÆÕÍ¨ÎÄ×ÖĞÅÏ¢
+			//æ™®é€šæ–‡å­—ä¿¡æ¯
 			if (strncmp(sdrvbuf, "[TEXT]", 6) == 0)
 				nextType = data_type::Text;
-			else if (strncmp(sdrvbuf, "[FILE]", 6) == 0)//ÌáÊ¾ÓĞÎÄ¼şÒª½ÓÊÕ
+			else if (strncmp(sdrvbuf, "[FILE]", 6) == 0)//æç¤ºæœ‰æ–‡ä»¶è¦æ¥æ”¶
 			{
-				//·¢ËÍ¶Ë½ÓÊÕµ½[FILE]
-				//·¢ËÍ¶Ë£¬¿ªÊ¼·¢ËÍÎÄ¼ş
+				//å‘é€ç«¯æ¥æ”¶åˆ°[FILE]
+				//å‘é€ç«¯ï¼Œå¼€å§‹å‘é€æ–‡ä»¶
 				if (bSendFile)
 				{
 					ZeroMemory(sdrvbuf, sizeof(sdrvbuf));
@@ -299,8 +299,8 @@ void Recv(HWND hDialog)
 				}
 				else
 				{
-					//½ÓÊÕ¶Ë½ÓÊÕµ½[FILE]
-					//½ÓÊÕ¶Ë£¬¶ÁÈ¡ÎÄ¼şÃûºÍ´óĞ¡
+					//æ¥æ”¶ç«¯æ¥æ”¶åˆ°[FILE]
+					//æ¥æ”¶ç«¯ï¼Œè¯»å–æ–‡ä»¶åå’Œå¤§å°
 					nextType = data_type::FileBGIN;
 				}
 			}
@@ -344,7 +344,7 @@ void Recv(HWND hDialog)
 		}
 		else if (nextType == data_type::FileCTNU)
 		{
-			//·¢ËÍ¶ËÊÕµ½continueÖ±½Ó·¢ËÍÊı¾İ
+			//å‘é€ç«¯æ”¶åˆ°continueç›´æ¥å‘é€æ•°æ®
 			if (bSendFile)
 			{
 				infile = CreateFile(FileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -381,7 +381,7 @@ void Recv(HWND hDialog)
 				if (!WriteFile(infile, (void*)sdrvbuf, size, &filehadwrite, NULL))
 					SetWindowTextA(GetDlgItem(hDialog, IDC_E_RECV), "WriteFile failed!");
 
-				if (GetFileSize(infile, NULL) >= filesize)//½ÓÊÕÍê³É
+				if (GetFileSize(infile, NULL) >= filesize)//æ¥æ”¶å®Œæˆ
 				{
 					CloseHandle(infile);
 					SendData(hDialog, "[DONE]", 6);
@@ -395,7 +395,7 @@ void Recv(HWND hDialog)
 				{
 					CloseHandle(infile);
 					SendData(hDialog, "[CTNU]", 6);
-					SendData(hDialog, "start", 5);//Õ¼Î»
+					SendData(hDialog, "start", 5);//å ä½
 				}
 			}
 			nextType = data_type::Div;
@@ -438,13 +438,13 @@ void Print(HWND hDialog, bool bsend)
 }
 void GetFileInfo(HWND hDialog)
 {
-	//»¹Ã»¿ªÊ¼½ÓÊÕÎÄ¼şÊ±£¬ÕÒ³öÎÄ¼şÃû³ÆºÍÎÄ¼ş´óĞ¡
-	//¼´µÚÒ»ÌõÎÄ¼şÏûÏ¢
+	//è¿˜æ²¡å¼€å§‹æ¥æ”¶æ–‡ä»¶æ—¶ï¼Œæ‰¾å‡ºæ–‡ä»¶åç§°å’Œæ–‡ä»¶å¤§å°
+	//å³ç¬¬ä¸€æ¡æ–‡ä»¶æ¶ˆæ¯
 	CString name = sdrvbuf;
 	name.Delete(0, 8);
 	int a = name.Find(']');
 	name.Delete(a, name.GetLength() - a);
-	lstrcpy(filename, name.GetString());//»ñÈ¡ÎÄ¼şÃû
+	lstrcpy(filename, name.GetString());//è·å–æ–‡ä»¶å
 	name = sdrvbuf;
 	name.Delete(0, 8);
 	a = name.Find('[');

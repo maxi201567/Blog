@@ -1,9 +1,9 @@
-ÉîÈëÇ³³öMFC
+ï»¿æ·±å…¥æµ…å‡ºMFC
 C++ Primer Plus
-VCÉîÈëÏê½â
+VCæ·±å…¥è¯¦è§£
 C Primer
-CºÍÖ¸Õë
-Windows³ÌÐòÉè¼Æ
-ÓÎÏ·±à³Ì´óÊ¦¼¼ÇÉ
-DirectX 9.0 3DÓÎÏ·¿ª·¢»ù´¡
-windows socketsÍøÂç±à³Ì
+Cå’ŒæŒ‡é’ˆ
+Windowsç¨‹åºè®¾è®¡
+æ¸¸æˆç¼–ç¨‹å¤§å¸ˆæŠ€å·§
+DirectX 9.0 3Dæ¸¸æˆå¼€å‘åŸºç¡€
+windows socketsç½‘ç»œç¼–ç¨‹
