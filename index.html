@@ -1,68 +1,28 @@
-﻿<html>
+<!DOCTYPE>
+<html >
 <head>
-<title>Maxi's Blog | Home</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css\style_animation.css"/>
 </head>
 <body>
-			<div class="header-section">
-		      <img src="images/p1.png"></img>
-			    <div class="continer">
-                            <h1>hello..<span>!</span></h1>
-							<p>My English-name is Maxi & ...Hello again</p>
-						  <a href="#contact" class="scroll top"></a>
-			  </div>
-            </div>
-
-			<div class="col-md-3 face"></div>
-            <div class="study-section">
-	        <div class="container">
-					<div class="study-grids">
-						<div class="col-md-6 study-grid">
-						<h3>Personal Projects<span>!</span></h3>
-						<div class="project">
-						    <a href="Program\ftp_tect\proj.html">
-			    <p>An UDP socket program with async</a><label>(2016.12.11)</label></p>
-                            <a href="https://zhuanlan.zhihu.com/p/23782290">
-			    <p>My First Unity Game:"首期"</a><label>(2016下半年)</label></p>
-                            </a>	
-                            <a href="Program\xtool\proj.html">
-			    <p>ScreenShot Tool(I hate opening qq to get my screenshot image):"Xtool"</a><label>(2016下半年)</label></p>
-                            </a>
-                            <a href="Program\tic_tac_toe\proj.html">
-			    <p>My First Game on socket:"井字游戏"</a><label>(2016上半年)</label></p>
-                            </a>						
-                            <p>The old project is waitting to write on blog...</p>
-						</div>
-						<hr width="100%"/>
-						<p>To open a program compiled by VS2013 may need some dll:<a href="msvc_120_dll.rar">link</p></a>
-						</div>
-						<div class="col-md-6 study-grid">
-                        <h3>skills..<span>!</span></h3>
-						<div class="study2">
-						<h4>
-							<div class="Knowledge">
-							  <p>c/c++,win32,MFC,DirectX/HLSL,Unity</p>
-                              <p>winsocket.and i don't learn very well</p>
-                              </div>
-					    <hr width="100%"/>
-					    <h3>Books I had read<span>!</span></h3>
-						<iframe src="Books_had_read.txt", width="100%", height="150"></iframe>
-                         
-                        </h4>
-						</div>
-					    </div>
-				   </div>
-			      </div>
-			</div>
-			<div class="foot-section">
-			<center>
-            <img src="images/MYBAND.png" width="256"></img>
-            <p><img src="images/img-foot.png">give me your footprint</p></img>
-            <h3>Email:<a>Maxi12896@live.com</a></h3>
-            </center>
-			</div>
+    <div class="my_h">
+	<img src="images\p1.png" align="left"/><p>Hello!There.   I am Maxi.</p>
+	</div>
+    <ul class="menu">
+        <li><a href="main.html" target="frame_html">Index</a></li>
+        <li><a href="introduce.html" target="frame_html">Introduce</a></li>
+		<li class="menu_f">
+		    <a href="#">My Programs</a>
+			<ul class="popup">
+			<li class="menu_s"><a href="Program\ftp_tect\proj.html" target="frame_html">(2016.12)UDP局域网聊天室</a></li>
+			<li class="menu_s"><a href="Program\xtool\proj.html" target="frame_html">(2016.12)截图工具</a></li>
+			<li class="menu_s"><a href="Program\tic_tac_toe\proj.html" target="frame_html">(2016.11)井字游戏</a></li>
+			<li class="menu_s"><a href="about:blank" target="frame_html">...更多内容...</a></li>
+			</ul>
+		</li>
+	</ul>
+	
+<iframe src="main.html" id="frame" name="frame_html"></iframe>
 </body>
-</html> 
+</html>   
