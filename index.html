@@ -1,28 +1,17 @@
-<!DOCTYPE>
-<html >
+﻿<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="css\style_animation.css"/>
+<script type="text/javascript" src="platform_version.js">
+</script>
+<script type="text/javascript">
+   if(navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)){
+       window.location = 'web_mobile.html';
+   }
+   else
+   {
+       window.location = 'web_pc.html';
+   }
+</script>
 </head>
-<body>
-    <div class="my_h">
-	<img src="images\p1.png" align="left"/><p>Hello!There.   I am Maxi.</p>
-	</div>
-    <ul class="menu">
-        <li><a href="main.html" target="frame_html">Index</a></li>
-        <li><a href="introduce.html" target="frame_html">Introduce</a></li>
-		<li class="menu_f">
-		    <a href="#">My Programs</a>
-			<ul class="popup">
-			<li class="menu_s"><a href="Program\ftp_tect\proj.html" target="frame_html">(2016.12)UDP局域网聊天室</a></li>
-			<li class="menu_s"><a href="Program\xtool\proj.html" target="frame_html">(2016.12)截图工具</a></li>
-			<li class="menu_s"><a href="Program\tic_tac_toe\proj.html" target="frame_html">(2016.11)井字游戏</a></li>
-			<li class="menu_s"><a href="about:blank" target="frame_html">...更多内容...</a></li>
-			</ul>
-		</li>
-	</ul>
-	
-<iframe src="main.html" id="frame" name="frame_html"></iframe>
-</body>
-</html>   
+</html>
