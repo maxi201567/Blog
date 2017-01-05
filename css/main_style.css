@@ -1,0 +1,23 @@
+@font-face {
+    font-family:myFont;
+    src:url(../fonts/Self_Text.ttf);
+}
+
+.part{
+	
+}
+.part h3{
+	text-align:center;
+	font-size:4em;
+	color:#6d6d6d;
+}
+.part #mtitle{
+	color:#ff0000;
+	font-size:2em;
+}
+
+#copyright{
+	padding-top:3em;
+	font-size:0.5em;
+	text-align:right;
+}
