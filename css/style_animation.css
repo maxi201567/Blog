@@ -1,27 +1,15 @@
 body{
 	overflow-x:hidden;
 	overflow-y:hidden;
+	padding:0px;
 }
-.my_h{
-	background-color:#fff0ff;
-	width:100%;
-	height:11%;
-	font-size:60px;
-	color:#dd7d7d;
-	font-family:Arial;
-	margin:0 auto;
-}
-.my_h img{
-	width:7%;
-	padding:9px;	
-}
+
 #frame{
 	width:100%;
 	border:0;
-	height:83%;
-	scrol
+	height:100%;
 }
-*{margin:0;padding:0;}
+*{margin:0px;padding:0px;}
 .menu {
 	padding-right:1em;
 	font-size:2em;
@@ -52,7 +40,6 @@ li{
 .popup{
 	position:absolute;
 	z-index:2;
-	
 }
 .menu_s{
 	float:none;
