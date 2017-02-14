@@ -3,6 +3,9 @@ body{
 	overflow-y:hidden;
 	padding:0px;
 }
+body table{
+	 border-collapse:collapse;
+}
 
 #frame{
 	width:100%;
@@ -50,4 +53,13 @@ li{
 .menu_s a:hover{
     color:#ffffff;
 }
+.menu_c{
+	float:none;
+	display:none;
+	padding:5px;
+	background-color:#cfcccc;
+	width:420px;
+}
+
+ul li:hover .menu_c{display:block;}
 ul li:hover .menu_s{display:block;}
