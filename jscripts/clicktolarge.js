@@ -4,12 +4,12 @@ function elementDisplay(obja, objb)
 	var b=document.getElementById(objb);
 	if(b.style.display != 'none')
 	{
-		a.innerHTML='+';
+		a.innerHTML='●';
 		b.style.display='none';
 	}
     else
 	{	
-        a.innerHTML='-';
+        a.innerHTML='○';
         b.style.display='block';
 	}
 }
