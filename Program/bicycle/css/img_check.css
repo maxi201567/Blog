@@ -1,0 +1,6 @@
+
+.img_disc:hover{
+	border:#a0f0ff solid 5px;
+	border-radius:5px;
+	transform:scale(1.3);
+}
