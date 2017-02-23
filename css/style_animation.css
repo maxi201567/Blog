@@ -14,7 +14,6 @@ body table{
 }
 *{margin:0px;padding:0px;}
 .menu {
-	padding-right:1em;
 	font-size:2em;
 	background-color:#f0f0ff;
 	margin:0 auto; 
@@ -35,6 +34,9 @@ li{
 	display:block;
 	padding:0 20px;
 	background-color:#99afff;
+	border:1px;
+	border-style:solid;
+	border-color:#90cfff;
 }
 .menu a:hover{
 	background-color:#ccccff;
@@ -60,6 +62,17 @@ li{
 	background-color:#cfcccc;
 	width:420px;
 }
-
 ul li:hover .menu_c{display:block;}
 ul li:hover .menu_s{display:block;}
+
+#hidebtn{
+	transition-duration:0.5s;
+}
+#hidebtn:hover {
+	background-color:rgba(200,200,255,0.7);
+}
+#td0, #td1, #td2,#td1 img{
+	transition-duration:1s;
+}
+
+

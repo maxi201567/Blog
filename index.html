@@ -7,23 +7,29 @@
 	<title>Maxi's Blog | One Page</title>
 </head>
 <body>
+	<script type="text/javascript" src="jscripts\indexctrl.js"></script>
     <table width="100%" height="100%">
     <tr>
-	   <td height="20%" style="background-color:#14ff48"><table width="100%" height="100%">
+	   <!--td0-->
+	   <td id="td0" height="20%" style="background-color:#14ff48"><table width="100%" height="100%">
 	       <tr>
-	          <td width="7%"><img style="padding:5px" src="images\p1.png" align="left" width="100px"></img></td>
+		      <!--td1-->
+	          <td id="td1" width="9%" style="background-color:rgba(200,200,255,0.7);">
+			  <div style="padding:5px;">
+			  <img src="images\p1.png" align="left" width="100%" style="display:inline-block;"></img>
+			  </div>
+			  </td>
 		      <td height="100%">
 		         <table width="100%" height="100%">
-		            <tr style="background-color:#14ff48">
-				        <td height="100%"><h1>Hello!There.I am Maxi.</h1></td>
+		            <tr style="background-color:#14ff48;">
+					    <!--td2-->
+				        <td id="td2" height="100%"><div style="padding:1em"><p style="font-size:3em;text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Hello!There.I am Maxi.</p></div></td>
 			        </tr>
 		            <tr style="background-color:#E0FFFF">
 				       <td>
 				          <ul class="menu">
-                                      <li><a href="main.html" target="frame_html">Index</a></li>
-		                              <li>&#160</li>
+                                      <li><a href="main.html" target="frame_html">Index</a></li>	
                                       <li><a href="introduce.html" target="frame_html">Introduce</a></li>
-		                              <li>&#160</li>
 		                              <li class="menu_f">
 		                              <a href="#">My Programs</a>
 			                          <ul class="popup">
@@ -34,7 +40,6 @@
 			                          <li class="menu_s"><a href="about:blank" target="frame_html">...更多内容...</a></li>
 			                          </ul>
 		                              </li>
-									  <li>&#160</li>
 									  <li class="menu_f">
 									  <a href="#">Comment</a>
 									  <ul class="popup">
@@ -60,9 +65,9 @@
 									  </li>
 									  </ul>
 									  </li>
-		                              <li>&#160</li>
 		                              <li><a href="#" onclick="javascript:history.back(-1)">Back</a></li>
 	                      </ul>
+						  <span onclick="scrolltosmall()"><img id="hidebtn" src="images\hidebtn.png" align="right" width="38px"></img></span>
 		         </table>
 		      </td>
 	       </table>
@@ -70,7 +75,7 @@
 	   </td>
 	</tr>
 	<tr>
-	<td><iframe  src="main.html" id="frame" name="frame_html"></iframe></td>	
+	<td><iframe src="main.html" id="frame" name="frame_html"></iframe></td>	
 	</tr>
 	</table>
 </body>
