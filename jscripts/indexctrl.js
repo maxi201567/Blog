@@ -4,10 +4,10 @@
     var t1=document.getElementById('td1');
 	var t2=document.getElementById('td2');
     var btn=document.getElementById('hidebtn');
-	if(t1.width != '1%')
+	if(t1.width != '3%')
 	{   
         t0.height='1%';	
-		t1.width='1%';	
+		t1.width='3%';	
 	    t2.height='1%';
 		t2.style.fontSize='0';
 		btn.style.transform='rotate(180deg)';

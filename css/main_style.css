@@ -2,7 +2,9 @@
     font-family:myFont;
     src:url(../fonts/Self_Text.ttf);
 }
-
+body{
+	background-color:#FfF8FF;
+}
 .part{
 	
 }
@@ -15,7 +17,30 @@
 	color:#ff0000;
 	font-size:2em;
 }
-
+.popup{
+	background-color:#DBDBDB;
+    transition-duration:1s;
+	display:inline-block;
+}
+.popup:hover{
+	background-color:rgba(168,192,255,0.6);
+}
+.popup:hover img{
+	background-color:rgba(128,255,128,0.6);
+}
+.popup:hover .popup_show{
+	display:inline-block;
+}
+.popup_show{
+    display:none;
+	float:left;
+	font-size:2em;
+    padding:5px 10px 0 10px;
+}
+.popup_show:hover{
+	color:#3d3d3d;
+	text-shadow:0 1px 2px #000;
+}
 #copyright{
 	padding-top:3em;
 	font-size:0.5em;
