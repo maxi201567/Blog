@@ -1,4 +1,6 @@
-
+.img_disc{
+    transition-duration:0.3s;
+}
 .img_disc:hover{
 	border:#a0f0ff solid 5px;
 	border-radius:5px;
