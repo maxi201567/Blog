@@ -1,0 +1,33 @@
+.mic_head
+{
+	padding: 1px;	
+	background-color: #fffc15;
+	vertical-align: middle;
+	font-family: Arial;
+}
+.mic_contain
+{
+	text-align: center;
+	background-color: #ccfcfc;
+}
+.mic_introduce
+{
+}
+.mic_foot
+{
+	padding:1em;
+	background-color: #ddffff;
+	text-align: center;
+}
+#download
+{
+	text-align:center;
+	background-color:afafaf;
+	width:20%;
+	font-size: 1.3em;
+	transition-duration:0.3s;
+}
+#download:hover
+{
+	background-color: #dfdfff;
+}
