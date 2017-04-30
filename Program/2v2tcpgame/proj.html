@@ -1,0 +1,123 @@
+﻿<html>
+<meta charset="utf-8"/>
+
+<title>Maxi's Blog | Project</title>
+<link rel="stylesheet" type="text/css" href="..\Prog_css\img_check.css"/>
+
+<style>	
+     #head{
+		 padding-top: 1px;
+	     padding-bottom: 1px;
+		 padding-left:5px;
+		 padding-right:5px;
+		 background-color:rgba(192,255,192,0.6);
+	 }
+	 body{
+	     background-image:url("../../images/background.jpg");
+	 }
+	 footer{
+	     padding-top: 1px;
+	     padding-bottom: 1px;
+	     background-color: rgba(255,255,255,0.5);
+	 }
+	 #update{
+	     padding: 1em;
+	     background-color:rgba(192,212,255,0.5);
+	 }
+	 #disc{
+	     padding-top: 1em;
+	     padding-bottom: 1em;
+	     background-color:rgba(192,192,255,0.5);
+	 }
+     #icon0{
+	     width:209px;
+		 height:84px;
+		 background:url("../../images/download_button.png") no-repeat -1px -6px;
+	 }
+	 #icon1{
+	     width:209px;
+		 height:84px;
+		 background:url("../../images/download_button.png") no-repeat -1px -93px;
+	 }
+	 #icon2{
+	     width:209px;
+		 height:84px;
+		 background:url("../../images/download_button.png") no-repeat -214px -6px;
+	 }
+	 #icon3{
+	     width:209px;
+		 height:84px;
+		 background:url("../../images/download_button.png") no-repeat -214px -93px;
+	 }
+	 .img_dsc{
+	 	transition-duration:0.3s;
+	    width:25%;
+	 }
+	 .img_dsc:hover{
+	 	width:35%;
+	 	border: #faffa0 solid 5px;	
+	 }
+</style>
+
+	 
+<head>
+<div id="head">
+<table width="100%" style="border-collapse:collapse">
+<tr>
+   <td style="background-color:#00cccc"><img src="icon.png", width="94px"></img></td>
+   <td style="background-color:#00cccc"><table>
+             <tr><td><h1>2v2撞球</h2></td></tr>
+			 <tr><td><h5>当前测试版本:ver-0.8.0</h6></td></tr>
+	   </table>
+   </td>
+   <td align="right">
+      <table style="background-color:#cccccc">
+            <tr>
+			   <td><h2>下载:</h2></td>
+               <td><div id="icon1"></div></td>
+               <td><a href="Ball2v2_2017430_0.8.0.apk"><div id="icon2"></div></a></td>
+            </tr>
+      </table>
+   </td>
+</tr>
+</table>
+
+</head>
+
+<body>
+<div id="dis_a">
+<h4>2017-4-30|本次更新内容:</h4>
+<ul>
+<li>游戏首次发布</li>
+<li>UDP广播IP地址，无需手动输入，或许有多个wifi地址广播失败的bug，请提点</li>
+<li>TCP通信，基本保证不会出现通信包顺序错乱</li>
+<li>重点是:房主开启wifi等待玩家手机连接，准备完毕即可开始游戏，无需1位流量，想开就开</li>
+<li>没有游戏音效,请手动配乐</li>
+<li>小球在客户端中是抖动的,因为socket网络通讯不可能和本地通讯一样速度，小球位置是每次有通信包到达的时候更新的</li>
+<li>Bug:等待开始游戏时取消准备依旧要开始游戏，待修复</li>
+<li>还有Bug请留言我的公众号</li>
+</ul>
+
+</div>
+<center>
+<div id="disc">
+<img class="img_dsc" src="GameImg\img0.png"></img>
+<img class="img_dsc" src="GameImg\img1.png"></img>
+<img class="img_dsc" src="GameImg\img2.png"></img>
+<img class="img_dsc" src="GameImg\img3.png"></img>
+<img class="img_dsc" src="GameImg\img4.png"></img>
+</center>
+<div id="dis_c">
+<h3 style="padding:0 6em 0 6em;">游戏适合1v1或2v2，希望想我的微信公众号发表意见</h3>
+			</div>
+</div>
+</body>
+<footer>
+<center>
+<h5>Project:Maxi2017_04_Begin-Personal Program,HTML:Maxi2017_0430_Done</h5>
+</center>
+</footer>
+
+</html>
+
+
