@@ -1,0 +1,29 @@
+.myhead{
+
+}
+
+
+.tb_dlbtn{
+	background-color:#cccccc;
+	text-align:center;
+	width:100%;
+	padding:6px;
+	border-radius:5px;
+}
+.div_dlbtn_en{
+	height: 100%;
+	width: 100%;
+	line-height: 64px;
+	vertical-align: middle;
+	background-color: #79ff99;
+	border-radius: 5px;
+}
+.div_dlbtn_en a{
+    text-decoration: none;
+	color: #7d7d7d;
+	font-size: 1.5em;
+}
+.div_dlbtn_en:hover{
+    background-color: #55ff39;
+    cursor: pointer;
+}

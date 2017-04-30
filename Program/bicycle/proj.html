@@ -2,7 +2,7 @@
 <meta charset="utf-8"/>
 
 <title>Maxi's Blog | Project</title>
-<link rel="stylesheet" type="text/css" href="..\Prog_css\img_check.css"/>
+<link rel="stylesheet" type="text/css" href="..\Prog_css\unity_style.css"/>
 
 <style>	
      #head{
@@ -29,45 +29,35 @@
 	     padding-bottom: 1em;
 	     background-color:rgba(192,192,255,0.5);
 	 }
-     #icon0{
-	     width:209px;
-		 height:84px;
-		 background:url("../../images/download_button.png") no-repeat -1px -6px;
+	 .img_dsc{
+	 	transition-duration:0.3s;
+	    width:15%;
+	    position: relative;
 	 }
-	 #icon1{
-	     width:209px;
-		 height:84px;
-		 background:url("../../images/download_button.png") no-repeat -1px -93px;
-	 }
-	 #icon2{
-	     width:209px;
-		 height:84px;
-		 background:url("../../images/download_button.png") no-repeat -214px -6px;
-	 }
-	 #icon3{
-	     width:209px;
-		 height:84px;
-		 background:url("../../images/download_button.png") no-repeat -214px -93px;
+	 .img_dsc:hover{
+	 	width:20%;
+	 	border: #faffa0 solid 5px;	
 	 }
 </style>
 
 	 
 <head>
 <div id="head">
-<table width="100%" style="border-collapse:collapse">
+<table width="100%" style="border-collapse:collapse;background-color:rgba(255,255,255,0.5);">
 <tr>
    <td style="background-color:#00cccc"><img src="icon.png", width="94px"></img></td>
    <td style="background-color:#00cccc"><table>
-             <tr><td><h1>自行车马拉松(暂名)</h2></td></tr>
-			 <tr><td><h5>当前测试版本:ver-0.9.2</h6></td></tr>
+			 <tr><td><h1>自行车马拉松</h1></td></tr>
+			 <tr><td><p>当前测试版本:ver-0.9.2</p></td></tr>
 	   </table>
    </td>
-   <td align="right">
-      <table style="background-color:#cccccc">
+    <td width="40%">
+   </td>
+   <td>
+      <table class="tb_dlbtn">
             <tr>
-			   <td><h2>下载:</h2></td>
-               <td><div id="icon1"></div></td>
-               <td><a href="bicycle_092_170314.apk"><div id="icon2"></div></a></td>
+               <td><div style="text-align:center;vertical-align: middle;font-size:3em;">下载:</div></td>
+               <td><div class="div_dlbtn_en"><a href="bicycle_092_170314.apk" style="padding:1em;">Android版本</a></div></td>
             </tr>
       </table>
    </td>
@@ -104,10 +94,10 @@
 </div>
 <center>
 <div id="disc">
-<img class="img_disc" src="GameImg\img0.jpg"></img>
-<img class="img_disc" src="GameImg\img1.jpg"></img>
-<img class="img_disc" src="GameImg\img2.jpg"></img>
-<img class="img_disc" src="GameImg\img3.jpg"></img>
+<img class="img_dsc" src="GameImg\img0.jpg"></img>
+<img class="img_dsc" src="GameImg\img1.jpg"></img>
+<img class="img_dsc" src="GameImg\img2.jpg"></img>
+<img class="img_dsc" src="GameImg\img3.jpg"></img>
 </center>
 <div id="dis_c">
 <h3 style="padding:0 6em 0 6em;">游戏使用两个按键控制自行车前进和侧摆，想要走远，你不仅要有速度，还要通过侧摆绕开前方的障碍物，并且不能撞上路边的花基上。
