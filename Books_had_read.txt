@@ -1,4 +1,4 @@
-﻿深入浅出MFC
+深入浅出MFC
 C++ Primer Plus
 VC深入详解
 C Primer
@@ -7,3 +7,5 @@ Windows程序设计
 游戏编程大师技巧
 DirectX 9.0 3D游戏开发基础
 windows sockets网络编程
+游戏引擎架构
+Direct3d HLSL实例精讲
