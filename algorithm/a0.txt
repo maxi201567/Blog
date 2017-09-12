@@ -1,9 +1,27 @@
-﻿#include <iostream>
+//Maxi 2017-9-12-2027
+
+#include <iostream>
 #include <stack>
 #include <vector>
 
 using namespace std;
+/*
+比如1+2*3/4-5
+不考虑括号“（）”
+·1入数值栈	
+·+入符号栈	
+·2入数值栈
+·遇到*号，2出栈与*号后的3相乘，结果入栈
+·遇到/号，栈顶出栈为a，除以4结果入栈
+·-入栈
+·5入栈
 
+·如果符号栈不为空，继续计算
+·弹出数值栈两个数，弹出‘-’号，计算结果入栈
+·重复
+
+·最后结果为数值栈栈顶（栈底）
+*/
 int function(string& st) {
 	stack<int> numbers;
 	stack<char> characters;
