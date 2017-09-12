@@ -1,0 +1,50 @@
+﻿#include <iostream>
+#include <stack>
+#include <vector>
+
+using namespace std;
+
+int function(string& st) {
+	stack<int> numbers;
+	stack<char> characters;
+	string::iterator i= st.begin();
+	int result = 0;
+	//+(-1)-(-2)
+	for (; i != st.end(); i++) {
+		if (*i > '0' && *i < '9') {
+			numbers.push(*i - '0');
+		}
+		else if (*i == '+' || *i == '-') {
+			//+ - 先存
+			characters.push(*i);
+		}
+		else if (*i == '*') {
+			int a = numbers.top();
+			numbers.pop();
+			int b = *(++i)-'0';
+			numbers.push(a*b);
+		}
+		else if (*i == '/') {
+			int a = numbers.top();
+			numbers.pop();
+			int b = *(++i)-'0';
+			numbers.push(a / b);
+		}
+	}
+	while (!characters.empty()) {
+		//+ -求和
+		int b = numbers.top();
+		numbers.pop();
+		int a = numbers.top();
+		numbers.pop();
+		if (characters.top() == '+') {
+			numbers.push(a + b);
+			characters.pop();
+		}
+		else {
+			numbers.push(a - b);
+			characters.pop();
+		}
+	}
+	return numbers.top();
+}
