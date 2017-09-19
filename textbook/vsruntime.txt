@@ -1,0 +1,4 @@
+﻿MT:mutithread,多线程库，编译器会从运行时库内选择多线程静态链接库解释代码
+MTd:mutithread+debug，多线程调试
+MD:MT+DLL，动态链接库，MSVCRT.lib、MSVCRT.dll
+MDd:MT+DLL+debug，动态链接库，MSVCRTD.lib、MSVCRTD.dll

@@ -14,16 +14,30 @@
     </ul>
 	
 	<div style="padding-left:1em;padding-right:1em;">
+	<div onclick="elementDisplay('bopen_a', 'bshow_a')" style="background-color:#cfffcf;padding-left:1em;padding:5px;border:1px solid #000;">
+	<table width="100%">
+	<tr>
+	   <td><span id="bopen_a">●</span>  我看过的书</td>
+	   <td style="text-align:right">(点击展开)</td>
+	</tr>
+	</table>
+	</div>
+	<div id="bshow_a" style="background-color:#dfffdf;display:none;padding-left:2em;border:1px solid #000;">
+	<iframe src="textbook/book.txt" width="100%" frameborder="no" ></iframe>
+	</div>
+	</div>
+
+	<div style="padding-left:1em;padding-right:1em;">
 	<div onclick="elementDisplay('bopen_b', 'bshow_b')" style="background-color:#cfffcf;padding-left:1em;padding:5px;border:1px solid #000;">
 	<table width="100%">
 	<tr>
-	   <td><span id="bopen_b">●</span>  我看过的书</td>
+	   <td><span id="bopen_b">●</span>  VS运行时库编译选项</td>
 	   <td style="text-align:right">(点击展开)</td>
 	</tr>
 	</table>
 	</div>
 	<div id="bshow_b" style="background-color:#dfffdf;display:none;padding-left:2em;border:1px solid #000;">
-	<iframe src="textbook/看过的书.txt" width="100%" frameborder="no" ></iframe>
+	<iframe src="textbook/vsruntime.txt" width="100%" frameborder="no" ></iframe>
 	</div>
 	</div>
 
