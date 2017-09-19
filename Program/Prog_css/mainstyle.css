@@ -19,7 +19,7 @@
 	background-color: #ddffff;
 	text-align: center;
 }
-#download
+.download
 {
 	text-align:center;
 	background-color:afafaf;
@@ -27,7 +27,11 @@
 	font-size: 1.3em;
 	transition-duration:0.3s;
 }
-#download:hover
+.download a
+{
+	text-decoration: none;
+}
+.download:hover
 {
 	background-color: #dfdfff;
 }
